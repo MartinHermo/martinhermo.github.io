@@ -67,7 +67,7 @@ function buscar(arrays){
         return name.includes(valor.toLowerCase());
     } );
     
-    renderProductosHTML(productosFiltradosNombres);
+    renderProductosHTML(productosFiltradosNombres, false);
 }
 
 function crearSeccionProductos(arrays){
@@ -103,12 +103,12 @@ function crearSeccionProductos(arrays){
             //ordenar por menor precio
             const porudctosOrdenadosMenor = [...arrays];
             porudctosOrdenadosMenor.sort((a,b)=>(a.precio - b.precio));
-            renderProductosHTML(porudctosOrdenadosMenor);
+            renderProductosHTML(porudctosOrdenadosMenor, false);
             console.log(porudctosOrdenadosMenor);
         }else if(selectCat.value == 2){
             const porudctosOrdenadosMayor = [...arrays];
             porudctosOrdenadosMayor.sort((a,b)=>(b.precio - a.precio));
-            renderProductosHTML(porudctosOrdenadosMayor);
+            renderProductosHTML(porudctosOrdenadosMayor, false);
             //ordenar por mayor precio
         }
     });
@@ -154,10 +154,10 @@ function crearSeccionProductos(arrays){
     document.body.append(section);
 }
 
-function renderProductosHTML(arrays){
+function renderProductosHTML(arrays, saltarstorage){
     divShowProduct.innerHTML = "";
     let storageStatus = localStorage.getItem("productos");
-    if(storageStatus != null && storageStatus.length >0){
+    if(storageStatus != null && storageStatus.length >0 && saltarstorage == true ){
         arrays = JSON.parse(storageStatus);
         
     }
@@ -168,12 +168,12 @@ function renderProductosHTML(arrays){
             //ordenar por menor precio            
             const porudctosOrdenadosMenor = [...arrays];
             porudctosOrdenadosMenor.sort((a,b)=>(a.precio - b.precio));
-            renderProductosHTML(porudctosOrdenadosMenor);
-            console.log(porudctosOrdenadosMenor);
+            renderProductosHTML(porudctosOrdenadosMenor, false);
+            console.log(porudctosOrdenadosMenor, false);
         }else if(selectCat.value == 2){
             const porudctosOrdenadosMayor = [...arrays];
             porudctosOrdenadosMayor.sort((a,b)=>(b.precio - a.precio));
-            renderProductosHTML(porudctosOrdenadosMayor);
+            renderProductosHTML(porudctosOrdenadosMayor, false);
             //ordenar por mayor precio
 
         }
@@ -234,7 +234,7 @@ function renderProductosHTML(arrays){
 function filtrarPorCategoria(array, cat){
 
     let productosFiltradosCategorias = productos.filter((el) => el.categoria == `${cat.toLocaleLowerCase()}`);
-    renderProductosHTML(productosFiltradosCategorias);
+    renderProductosHTML(productosFiltradosCategorias, false);
     console.log("pase x el filtro")
 }
 
@@ -360,7 +360,7 @@ async function buscarProductosJson(filtro){
     productos = data;
     if(filtro == " "){
         
-        renderProductosHTML(productos);
+        renderProductosHTML(productos, true);
         renderCarrito(productos);   
     }else if(filtro == "buscar"){
         buscar(productos);
@@ -394,7 +394,7 @@ carritoIcono.addEventListener("click", () => {
 btnProducto.addEventListener("click", () => { 
 
     if(navItemProducto.className == "nav-link active dropdown-toggle" || navItemProducto.className == "nav-link active dropdown-toggle show"){
-        renderProductosHTML(productos);
+        renderProductosHTML(productos, true);
     }else{
 
     
@@ -479,7 +479,7 @@ btnRecomendados.addEventListener("click", () => {
     carousel.remove();
     buscarProductosJson(" ");
     crearSeccionProductos(productos);
-    renderProductosHTML(productos);
+    renderProductosHTML(productos, true);
     
 });
 
@@ -489,7 +489,7 @@ btnMasVendidos.addEventListener("click", () => {
     carousel.remove();
     buscarProductosJson(" ");
     crearSeccionProductos(productos);
-    renderProductosHTML(productos);
+    renderProductosHTML(productos, true);
     
 });
 
