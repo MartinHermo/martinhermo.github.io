@@ -44,6 +44,7 @@ const btnProducto = document.getElementById("btnProductos");
 const divDistintosContainers =document.getElementById("distintosContainers");
 const carousel = document.getElementById("carouselExampleIndicators");
 const carritoDisplay = document.getElementById("carritoDisplay");
+
 const carritoIcono = document.getElementById("carritoIcono");
 const finalizarCompra = document.getElementById("finalizarCompra");
 const inputBuscar = document.getElementById("inputBuscar");
@@ -254,7 +255,8 @@ function filtrarPorCategoria(array, cat){
  * @param {*} parametro array de productos que deseo cargar y mostrar en el html
  */
 function renderCarrito(parametro){
-    carritoDisplay.innerHTML="";
+    carritoDisplay.innerHTML='<h2 class="tituloCarrito">Tu Carrito</h2>';
+    
 
     let storageStatus = localStorage.getItem("productos");
     if(storageStatus != null && storageStatus.length >0){
