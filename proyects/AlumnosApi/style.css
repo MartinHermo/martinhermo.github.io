@@ -1,0 +1,375 @@
+h1{
+    text-align: center;
+    color: #553a2b;
+    font-size: 50px;
+}
+
+.inputs{
+    background-color:  white;
+    
+   
+    height: 30px;
+    width: 20%;
+   
+}
+
+.inputPadron{
+    
+    width: 11%;
+    height: 30px;
+}
+
+.inputCantidad{
+    
+    width: 11%;
+    height: 30px;
+}
+
+.button{
+    width: 15%;
+   
+    height: 35px;
+    background-color: #efd3bb;
+    border-radius: 6px;
+}
+
+.button1{
+    width: 15%;
+    
+    height: 35px;
+    background-color: #8da3a6;
+    border-radius: 6px;
+}
+
+body{
+    background-color: #8da3a6;
+    padding: 0;
+    margin: 0;
+}
+
+.containerInput{
+    background-color: #fdd68d;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    border-radius: 10px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+}
+
+.container{
+    
+    margin-left: 25%;
+    margin-top: 35px;
+    width: 50%;
+    height: 100px;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: all 0.5s;
+    overflow-y: auto;
+}
+.container1{
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    margin-left: -100%;
+    margin-top: 35px;
+    width: 50%;
+    height: 100px;
+    transition: all 0.5s;
+}
+
+.inputNota{
+    margin-top: 10px;
+    margin-left: 10%;
+    height: 28px;
+}
+
+.btn2{
+    margin-left: 41%;
+    margin-top: 8px;
+    width: 15%;
+    height: 35px;
+    background-color: #efd3bb;
+    border-radius: 6px;
+}
+
+.btn21{
+    margin-left: 41%;
+    margin-top: 8px;
+    width: 15%;
+    height: 35px;
+    background-color: #8da3a6;
+    border-radius: 6px;
+}
+
+
+
+.contenedorP{
+    margin-left: 15%;
+    margin-top: 35px;
+    width: 70%;
+    height: 200px;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    opacity: 100%;
+    transition: all 0.5s;
+    
+    
+
+}
+.contenedorP1{
+    margin-left: 15%;
+    margin-top: 35px;
+    width: 70%;
+    height: 200px;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    opacity: 0%;
+    transition: all 0.5s;
+}
+
+.textoP{
+    text-align: center;
+    color: #553a2b;
+    font-size: 25px;
+}
+
+.btnPromedio{
+    margin-left: 27%;
+    margin-right: 0;
+    width: 15%;
+    height: 35px;
+    background-color: #efd3bb;
+    border-radius: 6px;
+}
+
+.btnPromedio1{
+    margin-left: 27%;
+    margin-right: 0;
+    width: 15%;
+    height: 35px;
+    background-color: #8da3a6;
+    border-radius: 6px;
+}
+
+.inputBuscador{
+    
+    margin-left: 7%;
+    height: 28px;
+    margin-right: 2%;
+}
+
+.opcionesBusqueda1{
+    margin-top: 40px;
+    width: 80%;
+    margin-left: 10%;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 20px;
+    opacity: 0;
+    transition: all 0.5s;
+    
+}
+
+.opcionesBusqueda{
+    margin-top: 40px;
+    width: 80%;
+    margin-left: 10%;
+    background-color: #fdd68d;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 45px;
+    font-size: 20px;
+    opacity: 100%;
+    transition: all 0.5s; 
+}
+.contenedorInfo{
+    margin-left: 10%;
+    margin-top: 35px;
+    width: 80%;
+    height: 350px;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    opacity: 100%;
+    transition: all 0.5s;
+    overflow-y: scroll;
+    opacity: 100%;
+    
+}
+.contenedorInfo2{
+    margin-left: 10%;
+    margin-top: 35px;
+    width: 80%;
+    height: 300px;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    opacity: 100%;
+    transition: all 0.5s;
+    overflow-y: scroll;
+    opacity: 100%; 
+}
+.contenedorInfo1{
+    margin-left: 10%;
+    margin-top: 35px;
+    width: 80%;
+    height: 350px;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    opacity: 100%;
+    transition: all 0.5s;
+    overflow-y: scroll;
+    opacity: 0;
+    
+}
+::-webkit-scrollbar {
+    width: 15px;
+  }
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 15px #553a2b;
+    border-radius: 10px;
+  }
+::-webkit-scrollbar-thumb {
+    background-color: #553a2b;
+    outline: 1px solid #553a2b;
+    border-radius: 10px;
+}
+.info{
+    display:flex;
+    justify-content: space-around;
+}
+.tituloAlumnos{
+   
+    color: #553a2b;
+    font-size: 1.5em;
+    margin-left: 10px;
+    margin-right: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.alumnoIndividual{
+    width: 99%;
+    display: flex;
+    height: 2.5em;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 0;
+    justify-content: space-around;
+    font-size: 1.5em;
+    align-items: center;
+    color: white;
+    transition: all 0.5s;
+    
+}
+.alumnoIndividual1{
+    width: 99%;
+    display: flex;
+    height: 2.5em;
+    background-color: #616f71;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 0;
+    justify-content: space-around;
+    font-size: 1.5em;
+    align-items: center;
+    color: white;
+    transition: all 0.5s;
+    
+}
+.alumnoIndividual2{
+    width: 99%;
+    display: flex;
+    height: 5em;
+    background-color: #616f71;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 0;
+    justify-content: space-around;
+    font-size: 1.5em;
+    align-items: center;
+    color: white;
+    transition: all 0.5s;
+}
+.botonalumnos{
+    width: 15%;
+    
+    
+    height: 35px;
+    background-color: #fdd68d;
+    border-radius: 6px;
+}
+.botonalumnos1{
+    width: 15%;
+    
+    height: 35px;
+    background-color: #8da3a6;
+    border-radius: 6px;
+}
+
+.clickAlumnos1{
+    margin-left: 10%;
+    margin-top: 5px;
+    width: 80%;
+    height: 50px;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    opacity: 100%;
+    transition: all 0.3s;
+    opacity: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+
+}
+.clickAlumnos{
+    margin-left: 10%;
+    margin-top: 5px;
+    width: 80%;
+    height: 0;
+    background-color: #8da3a6;
+    border: 4px solid #fdd68d;
+    box-sizing: border-box;
+    border-radius: 8px;
+    opacity: 100%;
+    transition: all 0.3s;
+    opacity: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+
+}
+.alerta{
+    background-color: #d4f2f6;
+}
+.botonAlerta{
+    background-color: #fdd68d;
+}
