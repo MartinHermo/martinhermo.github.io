@@ -204,11 +204,28 @@ function renderProductosHTML(arrays, saltarstorage){
     
         btnCarrito.addEventListener("click", () => {
             if(arrays[i].stock>0){
+                
                 arrays[i].unidadesCarrito ++;
                 arrays[i].stock --;
-                let parametroJSON = JSON.stringify(arrays);
+                for(let j = 0; j<productos.length ; j++){
+                    if(productos[j].id == arrays[i].id){
+                        productos[j].unidadesCarrito = arrays[i].unidadesCarrito;
+                        productos[j].stock = arrays[i].stock;
+                        console.log("actualice el producto");
+                    }
+                }    
+                /**productos.forEach(element =>{
+                    if(element.id == arrays[i].id && productos.length != arrays.length){
+                        element.unidadesCarrito = arrays[i].unidadesCarrito;
+                        element.stock = arrays[i].stock;
+                        console.log("actualice el producto");
+                    }
+                });*/
+                console.log(productos);
+                let parametroJSON = JSON.stringify(productos);
                 localStorage.setItem("productos", parametroJSON);
                 renderCarrito(productos);
+                console.log(productos);
             }else{
                 swal({
                     title: "Out Of Stock",
@@ -253,30 +270,30 @@ function renderCarrito(parametro){
         localStorage.setItem("productos", parametroJSON);
     }
     
-    for(let i = 0; i<parametro.length ; i++){
+    for(let i = 0; i<productos.length ; i++){
         const divRow=document.createElement("div");
         divRow.className = "row align-items-center producto";
     
         const divCol9 = document.createElement("div");
         divCol9.className = "col-9 tituloProducto ";
-        divCol9.innerHTML = `<p> <strong>${parametro[i].nombre}</strong></p>`
+        divCol9.innerHTML = `<p> <strong>${productos[i].nombre}</strong></p>`
         const divCol3 = document.createElement("div");
         divCol3.className = "col-3 btncantidad";
 
         const aMin = document.createElement("a");
         const aMax =  document.createElement("a");
         const numCarrito = document.createElement("span");
-        if (parametro[i].unidadesCarrito == 1){
+        if (productos[i].unidadesCarrito == 1){
             aMin.innerHTML = '<i class="fa-solid fa-trash"></i>';
         }else{
             aMin.innerHTML = '<i class="fa-solid fa-minus"></i>';
         }
-        numCarrito.innerHTML = `<strong> ${parametro[i].unidadesCarrito} </strong> `; 
+        numCarrito.innerHTML = `<strong> ${productos[i].unidadesCarrito} </strong> `; 
         aMax.innerHTML = '<i class="fa-solid fa-plus"></i>';
 
         divCol3.append(aMin, numCarrito , aMax);
         divRow.append(divCol9 , divCol3);
-        if(parametro[i].unidadesCarrito > 0 ){
+        if(productos[i].unidadesCarrito > 0 ){
             carritoDisplay.append(divRow);}
         
         
@@ -285,11 +302,11 @@ function renderCarrito(parametro){
 
         aMax.addEventListener("click", () => {
             
-            if(parametro[i].stock>0){
-                parametro[i].stock--;
-                parametro[i].unidadesCarrito ++;
+            if(productos[i].stock>0){
+                productos[i].stock--;
+                productos[i].unidadesCarrito ++;
                 aMin.innerHTML = '<i class="fa-solid fa-minus"></i>';
-                let parametroJSON = JSON.stringify(parametro);
+                let parametroJSON = JSON.stringify(productos);
                 localStorage.setItem("productos", parametroJSON);
                 
             }else{
@@ -307,30 +324,30 @@ function renderCarrito(parametro){
                 
             }
 
-            numCarrito.innerHTML = `<strong> ${parametro[i].unidadesCarrito} </strong> `;
-            calcularTotal(parametro);
+            numCarrito.innerHTML = `<strong> ${productos[i].unidadesCarrito} </strong> `;
+            calcularTotal(productos);
             
             
             
         }); 
         
         aMin.addEventListener("click", () => {
-            parametro[i].stock ++;
-            parametro[i].unidadesCarrito -- ;
-            if (parametro[i].unidadesCarrito == 1){
+            productos[i].stock ++;
+            productos[i].unidadesCarrito -- ;
+            if (productos[i].unidadesCarrito == 1){
                     aMin.innerHTML = '<i class="fa-solid fa-trash"></i>';
-            }else if(parametro[i].unidadesCarrito == 0){
+            }else if(productos[i].unidadesCarrito == 0){
                     divRow.remove();
                    
             }
-            let parametroJSON = JSON.stringify(parametro);
+            let parametroJSON = JSON.stringify(productos);
             localStorage.setItem("productos", parametroJSON);
-            numCarrito.innerHTML = `<strong> ${parametro[i].unidadesCarrito} </strong> `;
-            calcularTotal(parametro);
+            numCarrito.innerHTML = `<strong> ${productos[i].unidadesCarrito} </strong> `;
+            calcularTotal(productos);
         });
                 
     }
-    calcularTotal(parametro);
+    calcularTotal(productos);
     
 }
 function calcularTotal(parametros){
@@ -348,16 +365,20 @@ function calcularTotal(parametros){
  * @param {*} filtro ya que la funcion es ascincronica, en ella mismo paso como parametro y si quiero filtrar o buscar para realizarlo en este espacio
  */
 async function buscarProductosJson(filtro){
-    const resp = await fetch("productos.json")
-    const data = await resp.json();
     let storageStatus = localStorage.getItem("productos");
+    let data = [];
+    let resp = [];
+    if(storageStatus == null){
+        resp = await fetch("productos.json")
+        data = await resp.json();
+        productos = data; 
+    }
+    console.log(storageStatus);
     if(storageStatus != null && storageStatus.length >0){
         productos = JSON.parse(storageStatus);
         
-    }else{
-        productos = data; 
     }
-    productos = data;
+    
     if(filtro == " "){
         
         renderProductosHTML(productos, true);
@@ -394,6 +415,7 @@ carritoIcono.addEventListener("click", () => {
 btnProducto.addEventListener("click", () => { 
 
     if(navItemProducto.className == "nav-link active dropdown-toggle" || navItemProducto.className == "nav-link active dropdown-toggle show"){
+        
         renderProductosHTML(productos, true);
     }else{
 
@@ -403,7 +425,7 @@ btnProducto.addEventListener("click", () => {
     buscarProductosJson(" ");
     crearSeccionProductos(productos);
     } 
-    //renderProductosHTML(productos);
+    renderProductosHTML(productos,true);
 });
 
 btnBuscar.addEventListener("click", (event)=>{
